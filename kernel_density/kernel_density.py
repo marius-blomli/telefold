@@ -4,6 +4,7 @@ import arcpy, arcinfo
 from arcpy.sa import *
 import zipfile
 import shutil
+import os
 
 def createRequiredFolders():
 	print 'Create the folders we need'
@@ -48,19 +49,24 @@ def clipRasterMap(source_file, clip_target, clip_rectangle):
 	arcpy.Clip_management(source_file, clip_rectangle, clip_target)
 
 
-def cleanupTempFiles(temp_files):
+def cleanup_temp_files(temp_files):
 	print 'Delete all files from ' + temp_files
 	shutil.rmtree(temp_files)
+	
+def create_temp_dir(directory):
+	print 'Create temp directory'
+	if not os.path.exists(directory):
+		os.makedirs(directory)
 
-
-cleanupTempFiles(config['temp_directory'])
+create_temp_dir(config['temp_directory'])
+cleanup_temp_files(config['temp_directory'])
 unzipped_files = unzipMatrikkelFiles(config['matrikkel_zip_files'], config['temp_directory'])
 merged_file = config['temp_directory'] + config['file_name_raw_merged_temp']
 mergeMatrikkelFiles(unzipped_files, merged_file)
 raw_raster_file = config['temp_directory'] + config['file_name_raw_kernel_density_temp']
 peformKernelDensity(merged_file, raw_raster_file, config['kernel_density_cell_size'], config['kernel_density_search_radius'])
 clipRasterMap(raw_raster_file, config['file_name_kernel_density'], config['area_rectangle'])
-cleanupTempFiles(config['temp_directory'])
+cleanup_temp_files(config['temp_directory'])
 sys.exit(0)	
 	
 	
