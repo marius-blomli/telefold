@@ -29,10 +29,11 @@ config = {
 	}],
 	'temp_directory': 'C:/temp/ntnu_temp/',
 	'file_name_raw_merged_temp': 'merged_matrikkel.shp',
+	'file_name_raw_merged_transformed_temp': 'merged_matrikkel_transformed.shp',
 	'file_name_raw_kernel_density_temp': 'kernel_density_raw.img',
-	'area_rectangle': '6550000 550000 6560000 560000',
-	'area_rectangle_x': '6533900 532700 6561800 590000',
-	'file_name_kernel_density': 'Y:/prosesserte_data/kernel_density_25_5000.img',
+	'file_name_raster_to_fit': 'Y:/prosesserte_data/slope_arcm_img.img',
+	'area_rectangle': '532687,5 6533912,5 589987,5 6561812,5',
+	'file_name_kernel_density': 'Y:/prosesserte_data/kernel_density_25_500.img',
 	'kernel_density_cell_size': 25,
-	'kernel_density_search_radius': 5000
+	'kernel_density_search_radius': 500
 }
