@@ -1,2 +1,8 @@
 kernel_density/kernel_density_config.pyc
 kernel_density/venv/
+*.rdc
+*.RDC
+*.rst
+*.rst.aux
+*.log
+*.rst.aux.xml
